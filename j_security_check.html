@@ -1,0 +1,182 @@
+<!-- {COPYRIGHT-TOP}
+ * IBM Confidential
+ * (C) Copyright IBM Corp. 2013, 2019
+ *
+ * << 5725-F92, 5725-F93, 5725-G33 >>
+ *
+ * All Rights Reserved
+ * Licensed Material - Property of IBM
+ * The source code for this program is not published or otherwise
+ * divested of its trade secrets, irrespective of what has
+ * been deposited with the U. S. Copyright Office.
+ *
+ * U.S. Government Users Restricted Rights
+ * - Use, duplication or disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ {COPYRIGHT-END} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://*.kampyle.com https://*.medallia.eu; child-src 'self' https://*.kampyle.com https://*.medallia.eu https://www-304.ibm.com https://www-947.ibm.com https://idaas.iam.ibm.com https://www.ibm.com https://prepiam.toronto.ca.ibm.com https://www-sso.toronto.ca.ibm.com https://wwwbeta-sso.toronto.ca.ibm.com:444 https://www-wi-sso3.toronto.ca.ibm.com:445 https://www-wi-sso4.toronto.ca.ibm.com:446; frame-src 'self' https://*.kampyle.com https://*.medallia.eu https://www-304.ibm.com https://www-947.ibm.com https://idaas.iam.ibm.com https://www.ibm.com https://prepiam.toronto.ca.ibm.com https://www-sso.toronto.ca.ibm.com https://wwwbeta-sso.toronto.ca.ibm.com:444 https://www-wi-sso3.toronto.ca.ibm.com:445 https://www-wi-sso4.toronto.ca.ibm.com:446; script-src 'self' https://*.kampyle.com https://*.medallia.eu 'unsafe-eval' 'unsafe-inline'; style-src 'self' https://*.kampyle.com https://*.medallia.eu 'unsafe-inline'; img-src 'self' data: https://*.kampyle.com https://*.medallia.eu; font-src 'self' https://*.kampyle.com https://*.medallia.eu data:">
+<meta http-equiv="X-Content-Security-Policy" content="default-src 'self' https://*.kampyle.com https://*.medallia.eu; child-src 'self' https://*.kampyle.com https://*.medallia.eu https://www-304.ibm.com https://www-947.ibm.com https://idaas.iam.ibm.com https://www.ibm.com https://prepiam.toronto.ca.ibm.com https://www-sso.toronto.ca.ibm.com https://wwwbeta-sso.toronto.ca.ibm.com:444 https://www-wi-sso3.toronto.ca.ibm.com:445 https://www-wi-sso4.toronto.ca.ibm.com:446; frame-src 'self' https://*.kampyle.com https://*.medallia.eu https://www-304.ibm.com https://www-947.ibm.com https://idaas.iam.ibm.com https://www.ibm.com https://prepiam.toronto.ca.ibm.com https://www-sso.toronto.ca.ibm.com https://wwwbeta-sso.toronto.ca.ibm.com:444 https://www-wi-sso3.toronto.ca.ibm.com:445 https://www-wi-sso4.toronto.ca.ibm.com:446; script-src 'self' https://*.kampyle.com https://*.medallia.eu 'unsafe-eval' 'unsafe-inline'; style-src 'self' https://*.kampyle.com https://*.medallia.eu 'unsafe-inline'; img-src 'self' data: https://*.kampyle.com https://*.medallia.eu; font-src 'self' https://*.kampyle.com https://*.medallia.eu data:">
+
+	<link rel="stylesheet" href="/srm/dist/vendors~main.css?cb=1755400455491" type="text/css"/>
+    <link rel="stylesheet" href="/srm/dist/main.css?cb=1755400455491" type="text/css"/>
+</head>
+
+<body class="tpc unified evox">
+
+    
+
+
+
+
+<div id="loading">
+    <div class="flex-container content-center">
+        <div class="icon-56 progress-spinner"></div>
+        <div id="loadingText">Loading</div>
+    </div>
+    <script language="javascript">
+        
+        document.getElementById("loading").style.display="block";
+    </script>
+</div>
+
+
+    
+
+    
+    <script>
+        dojoConfig = {
+            isDebug: false,
+            gfxRenderer: 'svg,vml',
+            locale: "en-us"
+        };
+    </script>
+    
+    <script type="text/javascript" src="/srm/dist/gui-client.js?cb=1755400455491"></script>
+    <script type="text/javascript" src="/srm/dist/vendors~main.gui-client.js?cb=1755400455491"></script>
+    
+        <script type="text/javascript" src="/srm/dist/gui-client_en.js?cb=1755400455491"></script>
+    
+
+    <!-- Ensure the feature manager is initialized before it's referenced later on -->
+    <script type="text/javascript">
+        require(["tpc/util/FeatureManager"], function(FeatureManager) {
+            FeatureManager.setRBSRoles(["administrator","advancedAdministrator","alertEditor"]);
+            FeatureManager.setToggles([]);
+            FeatureManager.setLicense("TPCAE");
+            FeatureManager.setCognosInstalled("false");
+            FeatureManager.setServerOffset("25200000");
+            FeatureManager.setRuntimeMode("GA");
+            FeatureManager.setProduct("srm");
+            FeatureManager.setOverridePanel("");
+            FeatureManager.setHelpHostName("");
+            FeatureManager.setBasePanelHelpURL(":9569/kc/SS5R93/com.ibm.tpc.help/");
+            FeatureManager.setBaseMessageHelpURL(":9569/kc/SS5R93/com.ibm.tpc.help.messages/");
+            FeatureManager.setRemoteTpcServers(JSON.parse('[]'));
+            FeatureManager.setSupportInfo(JSON.parse('{}'));
+            FeatureManager.setSaasUserManagementUrl("");
+        });
+    </script>
+
+    <!-- Once the dom is loaded and the dependent modules are loaded - start the UI -->
+    <script type="text/javascript">
+        require([
+            "dojo/cookie",
+            "dojo/hash",
+
+            "evo/Evo-preload",
+            "evo/Persist",
+
+            "tpc/Master",
+            "tpc/patches/DojoOverrides",
+            "tpc/util/Names",
+            "tpc/util/Panels",
+            "tpc/util/RefreshManager",
+            "tpc/util/ServiceCallWrapper",
+            "tpc/util/UrlUtils",
+            "tpc/util/Utils",
+            "dojo/ready"
+        ], function(dojoCookie, hash, preload, Persist, Master, dojoOverrides, Names, Panels, RefreshManager, ServiceCallWrapper, UrlUtils, Utils, ready){
+
+            var overridePanel = "";
+            ServiceCallWrapper.setCSRFToken("e8043fca-ac1a-43fd-8c6f-1be2c1edcaa1")
+            localStorage.setItem(Names.localStorageItems.hasDataCollector, "true");
+
+            ready(function() {
+                //1. Check to see if we're overriding the standard panel determination behavior.
+                //This is done for SaaS initial setup. Otherwise ...
+                //2. If a hash is present but is unsupported; reset to the home page. Otherwise ...
+                //3. If a hashtag isn't present look for a hashtag passed by session attribute
+                //from the login page. Finally default to the home page for the scenario
+                //of the user entering the url ..../srm/gui
+                var panelId = UrlUtils.getHashOnly();
+                if (overridePanel) {
+                    hash(overridePanel);
+				        } else if (panelId && !Panels[panelId]) {
+					          hash("dashboard");
+				        } else if (!panelId) {
+				            panelId =  UrlUtils.getHashOnly("dashboard");
+				            hash(Panels[panelId] ? "dashboard" : "dashboard");
+                }
+
+                // Test feature
+                if (sessionStorage.getItem('forceHCM') === 'true') {
+                    document.body.classList.add('dijit_a11y');
+                }
+
+                if (sessionStorage.getItem('useCarbonButtons') === 'true') {
+                    document.body.classList.add('carbon-buttons');
+                } 
+
+                if (sessionStorage.getItem('useCarbonModals') === 'true') {
+                    document.body.classList.add('carbon-modals');
+                } 
+
+                Utils.setUserName("db2aapico");
+                RefreshManager.globalRefresh.startRefresh();
+
+                (Master.instance = new Master({
+                    userRoles: ["administrator","advancedAdministrator","alertEditor"],
+                    userName: "db2aapico",
+                    locale: "en-us",
+                    navRoots: Panels.root.children,
+                    rootLabel: "",
+                    navDefs: Panels,
+                    libPath: "/srm",
+                    extraInfo: "Administrator",
+                    websphere: "true"
+                })).startup();
+            });
+        });
+    </script>
+
+	
+	<div style="display: none;">
+    	<form method=post action="Logout" name="logoutForm">
+            <input type="hidden" name="isSoftlayerInstall" value="false">
+    	</form>
+	</div>
+</body>
+</html>
