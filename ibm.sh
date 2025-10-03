@@ -34,6 +34,6 @@ wget --quiet \
      --no-check-certificate \
      --load-cookies "$COOKIE_FILE" \
      --output-document "$DASHBOARD_HTML" \
-     "https://$HOST:$PORT/srm/REST/api/v1/"
+     "https://$HOST:$PORT/srm/REST/api/v1/StorageSystems/57909/Volumes"
 
 echo "Dashboard/API page saved to $DASHBOARD_HTML"
