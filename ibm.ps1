@@ -1,25 +1,19 @@
 $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-
 # POST Login
 $response = Invoke-WebRequest -Uri "https://10.10.10.70:9569/srm/j_security_check" `
     -Method Post `
     -Body @{ j_username = "db2aapico"; j_password = "db2aapico" } `
     -WebSession $session `
     -SkipCertificateCheck
-
 # GET หน้า API หลัง login
 $response2 = Invoke-WebRequest -Uri "https://10.10.10.70:9569/srm/REST/api/v1/StorageSystems/23080/RemoteReplication" `
     -WebSession $session `
     -SkipCertificateCheck
-
 $data_list = @()
-
 $result = $response2.Content | ConvertFrom-Json
-
 foreach($data in $result)
 {
  $data_list += [PSCustomObject]@{
-
        object_id =  $data.id
        consistency_group = $data.'Consistency Group'
        name = $data.Name
@@ -31,7 +25,6 @@ foreach($data in $result)
        status = $data.Status
        type =  $data.Type
  }
-
 }
 function Newsend-JsonPayload {
     param (
@@ -84,18 +77,11 @@ function Chunked {
         data = @($data_list)
     }
     # ระบุ URL API
-    $targetUrl = "http://localhost/server_logs/"
+    $targetUrl = "http://10.10.3.215:8181/server_logs/"
     # เรียก function ส่ง JSON
     $response = Newsend-JsonPayload -Url $targetUrl -Payload $payload -Depth 10
     Write-Host "Response from server: $response"
     Start-Sleep -Seconds 3
-
-
-
-
-
-
-
 
 #$CookieContainer = $session.Cookies
 #    $cookiesList = @()
