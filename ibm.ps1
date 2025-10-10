@@ -1,31 +1,39 @@
+# สร้าง WebSession
 $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+
+# Bypass certificate validation
+[System.Net.ServicePointManager]::ServerCertificateValidationCallback = { $true }
+
 # POST Login
 $response = Invoke-WebRequest -Uri "https://10.10.10.70:9569/srm/j_security_check" `
     -Method Post `
     -Body @{ j_username = "db2aapico"; j_password = "db2aapico" } `
-    -WebSession $session `
-    -SkipCertificateCheck
-# GET หน้า API หลัง login
+    -WebSession $session
+
+# GET API หลัง login
 $response2 = Invoke-WebRequest -Uri "https://10.10.10.70:9569/srm/REST/api/v1/StorageSystems/23080/RemoteReplication" `
-    -WebSession $session `
-    -SkipCertificateCheck
+    -WebSession $session
+
+# แปลง JSON
 $data_list = @()
 $result = $response2.Content | ConvertFrom-Json
-foreach($data in $result)
-{
- $data_list += [PSCustomObject]@{
-       object_id =  $data.id
-       consistency_group = $data.'Consistency Group'
-       name = $data.Name
-       source_target_host = $data.'Source {0} Target Host'
-       source_target_pool = $data.'Source {0} Target Pool'
-       source_target_storage = $data.'Source {0} Target Storage System'
-       source_target_tier = $data.'Source {0} Target Tier'
-       source_target_volume = $data.'Source {0} Target Volume'
-       status = $data.Status
-       type =  $data.Type
- }
+
+foreach($data in $result) {
+    $data_list += [PSCustomObject]@{
+        object_id =  $data.id
+        consistency_group = $data.'Consistency Group'
+        name = $data.Name
+        source_target_host = $data.'Source {0} Target Host'
+        source_target_pool = $data.'Source {0} Target Pool'
+        source_target_storage = $data.'Source {0} Target Storage System'
+        source_target_tier = $data.'Source {0} Target Tier'
+        source_target_volume = $data.'Source {0} Target Volume'
+        status = $data.Status
+        type =  $data.Type
+    }
 }
+$data_list | ft 
+exit -1
 function Newsend-JsonPayload {
     param (
         [Parameter(Mandatory)]
