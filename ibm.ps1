@@ -32,8 +32,8 @@ foreach($data in $result) {
         type =  $data.Type
     }
 }
-$data_list | ft 
-exit -1
+
+
 function Newsend-JsonPayload {
     param (
         [Parameter(Mandatory)]
@@ -84,13 +84,25 @@ function Chunked {
         product = "ibm_spectrum"
         data = @($data_list)
     }
-    # ระบุ URL API
+    try {
     $targetUrl = "http://10.10.3.215:8181/server_logs/"
     # เรียก function ส่ง JSON
     $response = Newsend-JsonPayload -Url $targetUrl -Payload $payload -Depth 10
     Write-Host "Response from server: $response"
-    Start-Sleep -Seconds 3
+     $data_list | ft 
+    Start-Sleep -Seconds 10
 
+    }
+    catch {
+       write-Host "fail to push data to logs server Error: $_"
+         $data_list | ft 
+         Start-Sleep -Seconds 10
+    }
+    # ระบุ URL API
+ 
+
+
+   
 #$CookieContainer = $session.Cookies
 #    $cookiesList = @()
 #    # ใช้ reflection เพื่อเข้าถึง internal domain table ของ CookieContainer
