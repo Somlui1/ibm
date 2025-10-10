@@ -89,6 +89,7 @@ function Chunked {
     # เรียก function ส่ง JSON
     $response = Newsend-JsonPayload -Url $targetUrl -Payload $payload -Depth 10
     Write-Host "Response from server: $response"
+    Write-Host "Data sent to logs server successfully."
      $data_list | ft 
     Start-Sleep -Seconds 10
 
